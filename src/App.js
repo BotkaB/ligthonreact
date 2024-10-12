@@ -1,25 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+import './App.css';
+import { useState } from 'react';
+import Jatekter from './components/Jatekter';
+
+export default function App() {
+
+  const [lista, setLista] = useState([true, true, false, false, true, false, false, false, true])
+
+
+
+  function kapcs(adat) {
+    console.log("app-ban", adat)
+
+    const sl = [...lista]
+
+    if (sl[adat] == true) {
+      sl[adat] = false
+    }
+    else {
+      sl[adat] = true
+    }
+
+    setLista([...sl])
+  }
+
+
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>LigthOn</h1>
       </header>
+      <article>
+        <div className="jatekter">
+          <Jatekter lista={lista} kapcs={kapcs} />
+        </div>
+      </article>
+
+      <footer>Botka Bianka</footer>
     </div>
   );
 }
 
-export default App;
+
